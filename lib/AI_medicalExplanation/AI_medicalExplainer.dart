@@ -85,7 +85,7 @@ class _AiMedicalexplainerState extends State<AiMedicalexplainer> {
     try {
       // Remember: Use '10.0.2.2:8000' for Android Emulator or '127.0.0.1:8000' for iOS Simulator
 
-      final url = Uri.parse('http://localhost:8000/explain');
+      final url = Uri.parse('http://localhost:8080/explain');
 
       final response = await http.post(
         url,

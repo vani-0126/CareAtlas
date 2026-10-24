@@ -1,33 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:health_bridge/Treatment Timeline/treatment_timeline.dart';
+import 'package:health_bridge/SymptomTracker/symptom_tracker_main.dart';
 
-class PrepareDashboard extends StatefulWidget {
-  const PrepareDashboard({super.key});
+class TrackDashboard extends StatefulWidget {
+  const TrackDashboard({super.key});
   @override
-  State<PrepareDashboard> createState() => _PrepareDashboardState();
+  State<TrackDashboard> createState() => _TrackDashboardState();
 }
 
-class _PrepareDashboardState extends State<PrepareDashboard> {
-  bool animateSummary = false;
-  bool animateQuestion = false;
-  bool animatePrepare = false;
+class _TrackDashboardState extends State<TrackDashboard> {
+  bool animateTreatmentTimeline = false;
+  bool animateSymptom = false;
+  bool animateTrack = false;
   @override
   void initState() {
     super.initState();
 
-    Future.delayed(Duration(milliseconds: 600), () {
+    Future.delayed(Duration(milliseconds: 300), () {
       setState(() {
-        animatePrepare = true;
+        animateTrack = true;
       });
     });
     Future.delayed(Duration(milliseconds: 600), () {
       setState(() {
-        animateQuestion = true;
+        animateTreatmentTimeline = true;
       });
     });
     Future.delayed(Duration(milliseconds: 900), () {
       setState(() {
-        animateSummary = true;
+        animateSymptom = true;
       });
     });
   }
@@ -44,13 +46,9 @@ class _PrepareDashboardState extends State<PrepareDashboard> {
           children: [
             AnimatedContainer(
               duration: Duration(milliseconds: 800),
-              transform: Matrix4.translationValues(
-                0,
-                animatePrepare ? 0 : 20,
-                0,
-              ),
+              transform: Matrix4.translationValues(0, animateTrack ? 0 : 20, 0),
               child: AnimatedOpacity(
-                opacity: animatePrepare ? 1.0 : 0.0,
+                opacity: animateTrack ? 1.0 : 0.0,
                 duration: Duration(milliseconds: 800),
 
                 child: SizedBox(
@@ -62,25 +60,27 @@ class _PrepareDashboardState extends State<PrepareDashboard> {
                       Row(
                         children: [
                           Icon(
-                            Icons.event_note,
+                            Icons.track_changes,
                             size: 35,
-                            color: Colors.purple,
+                            color: Colors.greenAccent,
                           ),
                           SizedBox(width: 15),
 
                           Text(
-                            "Prepare",
+                            "Track",
                             style: GoogleFonts.inter(
                               fontSize: 32,
                               fontWeight: FontWeight.bold,
-                              color: Colors.purple,
+                              color: Colors.greenAccent,
                             ),
                           ),
                         ],
                       ),
                       SizedBox(height: 15),
 
-                      Text("Get ready for appointments with helpful tools"),
+                      Text(
+                        "Monitor your health journey with easy-to-follow tools and insights.",
+                      ),
                     ],
                   ),
                 ),
@@ -92,19 +92,24 @@ class _PrepareDashboardState extends State<PrepareDashboard> {
               duration: Duration(milliseconds: 800),
               transform: Matrix4.translationValues(
                 0,
-                animateQuestion ? 0 : 20,
+                animateTreatmentTimeline ? 0 : 20,
                 0,
               ),
               child: AnimatedOpacity(
-                opacity: animateQuestion ? 1.0 : 0.0,
+                opacity: animateTreatmentTimeline ? 1.0 : 0.0,
                 duration: Duration(milliseconds: 800),
 
                 child: InkWell(
                   onTap: () {
-                    //Taken to Page with Medical Translator
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TreatmentTimeline(),
+                      ),
+                    );
                   },
                   child: Card(
-                    color: Color(0xFFCF9FFF),
+                    color: Color(0xFF32CD32),
                     elevation: 5,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(35),
@@ -115,13 +120,13 @@ class _PrepareDashboardState extends State<PrepareDashboard> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.quiz, color: Colors.white, size: 35),
+                          Icon(Icons.timeline, color: Colors.white, size: 35),
                           SizedBox(width: 15),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Question Builder",
+                                "Treatment Timeline",
                                 style: GoogleFonts.inter(
                                   color: Colors.white,
                                   fontSize: 20,
@@ -129,7 +134,7 @@ class _PrepareDashboardState extends State<PrepareDashboard> {
                                 ),
                               ),
                               Text(
-                                "Prepare questions before visits",
+                                "View treatments and milestones",
                                 style: GoogleFonts.inter(
                                   color: Color(0xFFFAF9F6),
                                   fontSize: 14,
@@ -151,19 +156,24 @@ class _PrepareDashboardState extends State<PrepareDashboard> {
               duration: Duration(milliseconds: 800),
               transform: Matrix4.translationValues(
                 0,
-                animateSummary ? 0 : 20,
+                animateSymptom ? 0 : 20,
                 0,
               ),
               child: AnimatedOpacity(
-                opacity: animateSummary ? 1.0 : 0.0,
+                opacity: animateSymptom ? 1.0 : 0.0,
                 duration: Duration(milliseconds: 800),
 
                 child: InkWell(
                   onTap: () {
-                    //Taken to Page with Medical Translator
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SymptomTrackerMain(),
+                      ),
+                    );
                   },
                   child: Card(
-                    color: Color(0xFFD57DED),
+                    color: Color(0xFF93C572),
                     elevation: 5,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(35),
@@ -174,17 +184,13 @@ class _PrepareDashboardState extends State<PrepareDashboard> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                            Icons.description,
-                            color: Colors.white,
-                            size: 35,
-                          ),
+                          Icon(Icons.edit_note, color: Colors.white, size: 35),
                           SizedBox(width: 15),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "My Health Summary",
+                                "Symptom Tracker",
                                 style: GoogleFonts.inter(
                                   color: Colors.white,
                                   fontSize: 20,
@@ -192,7 +198,7 @@ class _PrepareDashboardState extends State<PrepareDashboard> {
                                 ),
                               ),
                               Text(
-                                "Review Important Visit notes",
+                                "Record symptoms over time",
                                 style: GoogleFonts.inter(
                                   color: Color(0xFFFAF9F6),
                                   fontSize: 14,

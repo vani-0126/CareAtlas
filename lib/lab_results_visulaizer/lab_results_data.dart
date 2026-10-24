@@ -107,7 +107,7 @@ final labResults = [
     image: "assets/images/PLT.png",
   ),
   LabResult(
-    testName: "Hematocrit (HCT) ",
+    testName: "Hematocrit (HCT)",
     unit: "%",
     minValue: 36,
     maxValue: 52,

@@ -172,7 +172,19 @@ class _LabHomePageState extends State<LabHomePage> {
                   ),
                   leading: Icon(Icons.bloodtype, color: Colors.red, size: 20),
                   trailing: Icon(Icons.chevron_right, color: Colors.cyan),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => EnterValuePage(
+                          labResult: labResults.firstWhere(
+                            (test) =>
+                                test.testName == "Red Blood Cell (RBC) Count",
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 ),
                 ListTile(
                   title: Text(
@@ -185,7 +197,18 @@ class _LabHomePageState extends State<LabHomePage> {
                   ),
                   leading: Icon(Icons.bloodtype, color: Colors.red, size: 20),
                   trailing: Icon(Icons.chevron_right, color: Colors.cyan),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => EnterValuePage(
+                          labResult: labResults.firstWhere(
+                            (test) => test.testName == "Hemoglobin (HGB)",
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 ),
                 ListTile(
                   title: Text(
@@ -202,7 +225,18 @@ class _LabHomePageState extends State<LabHomePage> {
                     size: 20,
                   ),
                   trailing: Icon(Icons.chevron_right, color: Colors.cyan),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => EnterValuePage(
+                          labResult: labResults.firstWhere(
+                            (test) => test.testName == "Platelet (PLT) Count",
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 ),
                 ListTile(
                   title: Text(
@@ -215,7 +249,18 @@ class _LabHomePageState extends State<LabHomePage> {
                   ),
                   leading: Icon(Icons.bloodtype, color: Colors.red, size: 20),
                   trailing: Icon(Icons.chevron_right, color: Colors.cyan),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => EnterValuePage(
+                          labResult: labResults.firstWhere(
+                            (test) => test.testName == "Hematocrit (HCT)",
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
@@ -248,7 +293,18 @@ class _LabHomePageState extends State<LabHomePage> {
                   ),
                   leading: Icon(Icons.query_stats, color: Colors.red, size: 20),
                   trailing: Icon(Icons.chevron_right, color: Colors.cyan),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => EnterValuePage(
+                          labResult: labResults.firstWhere(
+                            (test) => test.testName == "Glucose",
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 ),
                 ListTile(
                   title: Text(

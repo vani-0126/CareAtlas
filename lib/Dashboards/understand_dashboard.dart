@@ -1,42 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:health_bridge/prepare_dashboard.dart';
-import 'package:health_bridge/track_dashboard.dart';
-import 'understand_dashboard.dart';
+import 'package:health_bridge/medical_translator/medical_search.dart';
+import '../lab_results_visulaizer/lab_home_page.dart';
+import '../AI_medicalExplanation/AI_medicalExplainer.dart';
 
-class HomeDashboard extends StatefulWidget {
-  const HomeDashboard({super.key});
+class UnderstandDashboard extends StatefulWidget {
+  const UnderstandDashboard({super.key});
   @override
-  State<HomeDashboard> createState() => _HomeDashboardState();
+  State<UnderstandDashboard> createState() => _UnderstandDashboardState();
 }
 
-class _HomeDashboardState extends State<HomeDashboard> {
-  bool animateUnderstand = false;
-  bool animateTrack = false;
-  bool animatePrepare = false;
-  bool animateOrganize = false;
+class _UnderstandDashboardState extends State<UnderstandDashboard> {
+  bool animateTitle = false;
+  bool animateMedicalTranslator = false;
+  bool animateLabResultsVisualizer = false;
+  bool animateAIMedicalExplanation = false;
   @override
   void initState() {
     super.initState();
-
-    Future.delayed(Duration(milliseconds: 200), () {
+    Future.delayed(Duration(milliseconds: 300), () {
       setState(() {
-        animateUnderstand = true;
-      });
-    });
-    Future.delayed(Duration(milliseconds: 400), () {
-      setState(() {
-        animateTrack = true;
+        animateTitle = true;
       });
     });
     Future.delayed(Duration(milliseconds: 600), () {
       setState(() {
-        animatePrepare = true;
+        animateMedicalTranslator = true;
       });
     });
-    Future.delayed(Duration(milliseconds: 800), () {
+    Future.delayed(Duration(milliseconds: 900), () {
       setState(() {
-        animateOrganize = true;
+        animateLabResultsVisualizer = true;
+      });
+    });
+    Future.delayed(Duration(milliseconds: 1200), () {
+      setState(() {
+        animateAIMedicalExplanation = true;
       });
     });
   }
@@ -44,131 +43,105 @@ class _HomeDashboardState extends State<HomeDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF8FAFC),
-      appBar: AppBar(title: const Text('After Signing in or signing up')),
+      backgroundColor: Color(0xFFF3F4F6),
+      appBar: AppBar(title: Text('Understand Dashboard')),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24, vertical: 80),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Understand Card - Animated
             AnimatedContainer(
               duration: Duration(milliseconds: 800),
-              transform: Matrix4.translationValues(
-                0,
-                animateUnderstand ? 0 : 20,
-                0,
-              ),
+              transform: Matrix4.translationValues(0, animateTitle ? 0 : 20, 0),
               child: AnimatedOpacity(
-                opacity: animateUnderstand ? 1.0 : 0.0,
+                opacity: animateTitle ? 1.0 : 0.0,
                 duration: Duration(milliseconds: 800),
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => UnderstandDashboard(),
-                      ),
-                    );
-                  },
-                  child: Card(
-                    color: Color(0xFF3B82F6),
-                    elevation: 5,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(35),
-                    ),
-                    child: SizedBox(
-                      height: 120,
-                      width: double.infinity,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+
+                child: SizedBox(
+                  width: double.infinity,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+
+                    children: [
+                      Row(
                         children: [
                           Icon(
                             Icons.medical_information,
-                            color: Colors.white,
                             size: 35,
+                            color: Colors.lightBlue,
                           ),
                           SizedBox(width: 15),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Understand",
-                                style: GoogleFonts.inter(
-                                  color: Colors.white,
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                "Medical Terms, Lab Results, and More",
-                                style: GoogleFonts.inter(
-                                  color: Color(0xFFFAF9F6),
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
+
+                          Text(
+                            "Understand",
+                            style: GoogleFonts.inter(
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.lightBlue,
+                            ),
                           ),
                         ],
                       ),
-                    ),
+                      SizedBox(height: 15),
+
+                      Text(
+                        "Learn medical information with clear explanations and helpful tools.",
+                      ),
+                    ],
                   ),
                 ),
               ),
             ),
+            SizedBox(height: 60),
 
-            // Spacing
-            SizedBox(height: 40),
-
-            // Track Button
             AnimatedContainer(
               duration: Duration(milliseconds: 800),
-              transform: Matrix4.translationValues(0, animateTrack ? 0 : 20, 0),
+              transform: Matrix4.translationValues(
+                0,
+                animateMedicalTranslator ? 0 : 20,
+                0,
+              ),
               child: AnimatedOpacity(
-                opacity: animateTrack ? 1.0 : 0.0,
+                opacity: animateMedicalTranslator ? 1.0 : 0.0,
                 duration: Duration(milliseconds: 800),
                 child: InkWell(
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => TrackDashboard()),
+                      MaterialPageRoute(builder: (context) => MedicalSearch()),
                     );
                   },
+
                   child: Card(
-                    color: Color(0xFF10B981),
+                    color: Color.fromRGBO(137, 207, 240, 1),
                     elevation: 5,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(35),
                     ),
                     child: SizedBox(
-                      height: 120,
+                      height: 100,
                       width: double.infinity,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                            Icons.track_changes,
-                            color: Colors.white,
-                            size: 35,
-                          ),
+                          Icon(Icons.menu_book, color: Colors.white, size: 35),
                           SizedBox(width: 15),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Track",
+                                "Medical Terms Translator",
                                 style: GoogleFonts.inter(
                                   color: Colors.white,
-                                  fontSize: 30,
+                                  fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Text(
-                                "Track Symptoms, Care Plans, and More",
+                                "Translate complex medical terminology.",
                                 style: GoogleFonts.inter(
                                   color: Color(0xFFFAF9F6),
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
@@ -181,64 +154,117 @@ class _HomeDashboardState extends State<HomeDashboard> {
                 ),
               ),
             ),
+            SizedBox(height: 60),
 
-            // Spacing
-            SizedBox(height: 40),
-
-            // Prepare Button
             AnimatedContainer(
               duration: Duration(milliseconds: 800),
               transform: Matrix4.translationValues(
                 0,
-                animatePrepare ? 0 : 20,
+                animateLabResultsVisualizer ? 0 : 20,
                 0,
               ),
               child: AnimatedOpacity(
-                opacity: animatePrepare ? 1.0 : 0.0,
+                opacity: animateLabResultsVisualizer ? 1.0 : 0.0,
+                duration: Duration(milliseconds: 800),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LabHomePage()),
+                    );
+                  },
+                  child: Card(
+                    color: Color(0xFFA7C7E7),
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(35),
+                    ),
+                    child: SizedBox(
+                      height: 100,
+                      width: double.infinity,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.science, color: Colors.white, size: 35),
+                          SizedBox(width: 15),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Lab Results Visualizer",
+                                style: GoogleFonts.inter(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                "Understand blood tests and lab values.",
+                                style: GoogleFonts.inter(
+                                  color: Color(0xFFFAF9F6),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 60),
+            AnimatedContainer(
+              duration: Duration(milliseconds: 800),
+              transform: Matrix4.translationValues(
+                0,
+                animateAIMedicalExplanation ? 0 : 20,
+                0,
+              ),
+              child: AnimatedOpacity(
+                opacity: animateAIMedicalExplanation ? 1.0 : 0.0,
                 duration: Duration(milliseconds: 800),
                 child: InkWell(
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PrepareDashboard(),
+                        builder: (context) => AiMedicalexplainer(),
                       ),
                     );
                   },
                   child: Card(
-                    color: Color(0xFF9957D6),
+                    color: Color(0xFF87CEEB),
                     elevation: 5,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(35),
                     ),
                     child: SizedBox(
-                      height: 120,
+                      height: 100,
                       width: double.infinity,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                            Icons.medical_services,
-                            color: Colors.white,
-                            size: 35,
-                          ),
+                          Icon(Icons.smart_toy, color: Colors.white, size: 35),
                           SizedBox(width: 15),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Prepare",
+                                "AI Medical Explanation",
                                 style: GoogleFonts.inter(
                                   color: Colors.white,
-                                  fontSize: 30,
+                                  fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Text(
-                                "Prepare for Your Visits & Procedures",
+                                "Ask questions and receive easy explanations.",
                                 style: GoogleFonts.inter(
                                   color: Color(0xFFFAF9F6),
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
@@ -251,73 +277,7 @@ class _HomeDashboardState extends State<HomeDashboard> {
                 ),
               ),
             ),
-
-            // Spacing
-            SizedBox(height: 40),
-
-            // Organize Button
-            AnimatedContainer(
-              duration: Duration(milliseconds: 800),
-              transform: Matrix4.translationValues(
-                0,
-                animateOrganize ? 0 : 20,
-                0,
-              ),
-              child: AnimatedOpacity(
-                opacity: animateOrganize ? 1.0 : 0.0,
-                duration: Duration(milliseconds: 800),
-                child: InkWell(
-                  onTap: () {
-                    //Organization Properties, Medical Records, Appointments, Medications, etc.
-                  },
-                  child: Card(
-                    color: Color(0xFFFF4433),
-                    elevation: 5,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(35),
-                    ),
-                    child: SizedBox(
-                      height: 120,
-                      width: double.infinity,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.folder_open,
-                            color: Colors.white,
-                            size: 35,
-                          ),
-                          SizedBox(width: 15),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Organize",
-                                style: GoogleFonts.inter(
-                                  color: Colors.white,
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                "Organize Your Medical Information",
-                                style: GoogleFonts.inter(
-                                  color: Color(0xFFFAF9F6),
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              SizedBox(height: 40),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
+          ], //Ending brackets and paranthesis
         ),
       ),
     );
