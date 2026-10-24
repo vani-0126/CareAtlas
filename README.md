@@ -17,16 +17,15 @@ Healthcare information can often be overwhelming, especially when patients are f
 - Create and save questions before doctor appointments
 - Organize concerns by appointment or topic
 
-### Appointment Notes
-- Record physician recommendations
-- Save important follow-up instructions
-- Keep all appointment notes organized
-
 ### Treatment Timeline
 - Track diagnoses, treatments, procedures, and important milestones
 - View medical history in chronological order
 
-### Lab Results Visualizer *(In Progress)*
+### Symptom Tracker
+- Track symptoms over the course of the day and see how many symptom you get in a day
+- search through past symptoms
+
+### Lab Results Visualizer
 - Display laboratory values in an easy-to-read format
 - Help users better understand common laboratory tests
 
@@ -35,16 +34,16 @@ Healthcare information can often be overwhelming, especially when patients are f
 - Provide patient-friendly descriptions of complex healthcare concepts
 
 ## Technologies Used
-
 - Flutter
 - Dart
+- Python
 - Material Design
 
 ## Project Status
 
-🚧 Active Development
+🚧 Developing
 
-Current focus includes expanding the medical terminology database, improving the search experience, implementing lab result visualizations, and integrating AI-powered medical explanations.
+All core features are done, currently working on touchups and things to be added in the future.
 
 ## Future Goals
 
@@ -55,7 +54,6 @@ Current focus includes expanding the medical terminology database, improving the
 - Integrate AI-assisted health education
 - Enhance lab result interpretation
 
-## Screenshots
 
 ## Screenshots
 
