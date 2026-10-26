@@ -29,7 +29,7 @@ Healthcare information can often be overwhelming, especially when patients are f
 - Display laboratory values in an easy-to-read format
 - Help users better understand common laboratory tests
 
-### AI Medical Explanation *(Planned)*
+### AI Medical Explanation
 - Generate simplified explanations for medical information
 - Provide patient-friendly descriptions of complex healthcare concepts
 
@@ -59,9 +59,6 @@ All core features are done, currently working on touchups and things to be added
 
 ### Home Screen
 ![Home Screen](Screenshots/home.png)
-
-### Medical Translator
-![Medical Translator](Screenshots/medicaltranslator.png)
 
 ## Author
 
